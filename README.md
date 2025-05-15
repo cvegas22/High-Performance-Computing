@@ -1,10 +1,15 @@
 # High-Performance Computing
-Parallelisation and Optimisation of Lid-Driven Cavity Solver
+**Parallelisation and Optimisation of Lid-Driven Cavity Solver**
+
+---
 
 ## Project Overview
-This repository provides a highly optimised and parallelised implementation of a solver for the 2D lid-driven cavity flow problem, using the vorticity-stream function formulation of the incompressible Navier-Stokes equations. Parallelisation was achieved using MPI for distributed-memory computing and OpenMP for shared-memory multi-threading. The solver uses a preconditioned Conjugate Gradient (CG) method for solving Poisson equations iteratively.
+This repository provides a highly optimised and parallelised implementation of a solver for the 2D lid-driven cavity flow problem, using the vorticity-stream function formulation of the incompressible Navier-Stokes equations. Parallelisation was achieved using **MPI** for distributed-memory computing and **OpenMP** for shared-memory multi-threading. The solver uses a preconditioned **Conjugate Gradient (CG)** method for solving Poisson equations iteratively.
+
+---
 
 ## Directory Structure
+```bash
 .
 ├── LidDrivenCavity.cpp/h            # Lid-driven cavity solver implementation
 ├── LidDrivenCavitySolver.cpp        # Main execution driver
