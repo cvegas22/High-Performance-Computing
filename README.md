@@ -21,6 +21,7 @@ This repository provides a highly optimised and parallelised implementation of a
 ├── repository.log                   # Detailed Git commit history
 ├── HPC_Report.pdf                   # Coursework report (MPI/OpenMP scaling and optimisations)
 └── README.md                        # This file
+```
 
 ## Dependencies
 - MPI (OpenMPI or similar)
