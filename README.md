@@ -23,11 +23,11 @@ This project contains an optimised and parallelised C++ implementation for the l
 ```
 
 ## Dependencies
-- MPI: Distributed-memory parallel execution.
-- OpenMP: Shared-memory threading.
-- CBLAS: BLAS routines for linear algebra operations.
-- Boost: Program options parsing and unit testing (Boost.Test).
-- Doxygen: Automated documentation generation.
+- **MPI**: Distributed-memory parallel execution.
+- **OpenMP**: Shared-memory threading.
+- **CBLAS**: BLAS routines for linear algebra operations.
+- **Boost**: Program options parsing and unit testing (Boost.Test).
+- **Doxygen**: Automated documentation generation.
 
 ## Compilation
 Use the provided Makefile to compile:
