@@ -62,23 +62,27 @@ mpirun -np 4 ./solver --Lx 1 --Ly 1 --Nx 200 --Ny 200 --Re 1000 --dt 0.005 --T 5
 - Good parallel scaling achieved with larger grid sizes (optimal for grids ≥ 100×100).
 
 ### MPI Performance Results (Runtime in seconds):
-Grid Size | 1 Rank | 4 Ranks | 9 Ranks | 16 Ranks
-25×25     | 3.1    | 5.3     | 7.9     | 8.2
-50×50     | 31.7   | 20.8    | 24.2    | 24.4
-100×100   | 259.2  | 108.0   | 91.5    | 72.2
-200×200   | 2666   | 747.1   | 460.7   | 335.2
-400×400   | 2180   | 588.2   | 287.9   | 197.0
+
+| Grid Size | 1 Rank | 4 Ranks | 9 Ranks | 16 Ranks |
+|-----------|--------|---------|---------|----------|
+| 25×25     | 3.1    | 5.3     | 7.9     | 8.2      |
+| 50×50     | 31.7   | 20.8    | 24.2    | 24.4     |
+| 100×100   | 259.2  | 108.0   | 91.5    | 72.2     |
+| 200×200   | 2666   | 747.1   | 460.7   | 335.2    |
+| 400×400   | 2180   | 588.2   | 287.9   | 197.0    |
 
 ## OpenMP Parallelisation
 - Shared-memory threading implemented for computational loops in `SolverCG`.
 - Custom parallel versions of `cblas_ddot`, `cblas_daxpy`, and `cblas_dcopy` implemented using OpenMP due to better performance over the standard CBLAS versions.
 
 ### OpenMP Performance Results (Runtime in seconds):
-Threads | 100×100 | 200×200 | 400×400
-1       | 259.2   | 2711    | 1874
-4       | 203.1   | 838.8   | 629.7
-8       | 177.4   | 705.1   | 363.9
-16      | 293.8   | 765.0   | 272.6
+
+| Threads | 100×100 | 200×200 | 400×400 |
+|---------|---------|---------|---------|
+| 1       | 259.2   | 2711    | 1874    |
+| 4       | 203.1   | 838.8   | 629.7   |
+| 8       | 177.4   | 705.1   | 363.9   |
+| 16      | 293.8   | 765.0   | 272.6   |
 
 Best performance noted for larger grid sizes and moderate thread counts (8 threads recommended).
 
