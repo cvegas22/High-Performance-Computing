@@ -1,0 +1,111 @@
+commit 028d86a1e3a85309447b4e75ceb4894ac9581b0b
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Fri Mar 22 20:19:22 2024 +0000
+
+    Unit tests for LidDrivenCavity and SolverCG classes
+
+A	unit_test_LidDrivenCavity.cpp
+A	unit_test_SolverCG.cpp
+
+commit 7450fcf03d18dc771266f5592a126a26501e2fd1
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Thu Mar 21 20:19:54 2024 +0000
+
+    SolverCG modified to support multithreading with OpenMP
+
+M	SolverCG.cpp
+M	SolverCG.h
+
+commit cd9de92cad7f360ff67b4e4f515972f0635213fb
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Mon Mar 18 23:42:23 2024 +0000
+
+    Profiler initializer added to the Makefile
+
+M	Makefile
+
+commit 47440ef06e9c96e6fb1c0c7a33ce14d4fc72a748
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Mon Mar 18 23:36:49 2024 +0000
+
+    MPI Optimised (partition layers shared at each iteration instead of full domain)
+
+M	LidDrivenCavity.cpp
+M	SolverCG.cpp
+M	SolverCG.h
+
+commit ca64dfe255c4cb350c6803d8c8df28d9674a1915
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Fri Mar 15 17:52:33 2024 +0000
+
+    MPI Finalised (full matrix partitioned p ways instead of inner matrix)
+
+M	LidDrivenCavity.cpp
+M	SolverCG.cpp
+
+commit 4bd2412b716b75679faeeb6d5d93859c2985cb4f
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Thu Mar 14 23:57:39 2024 +0000
+
+    MPI Finalised
+
+M	LidDrivenCavity.cpp
+M	LidDrivenCavity.h
+M	SolverCG.cpp
+M	SolverCG.h
+
+commit 130d4579107cdaf39e5f9e50d8ce20af43f4d942
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Thu Mar 14 18:11:59 2024 +0000
+
+    MPI applied to SolverCG (with local v and s as inputs)
+
+M	LidDrivenCavity.cpp
+M	LidDrivenCavity.h
+M	SolverCG.cpp
+M	SolverCG.h
+
+commit e04d3657c5dd0f2aed2ab891381464e3d82f7533
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Wed Mar 13 13:26:23 2024 +0000
+
+    MPI applied to calculation of interior vorticity equations
+
+M	LidDrivenCavity.cpp
+M	LidDrivenCavity.h
+M	LidDrivenCavitySolver.cpp
+M	Makefile
+
+commit e5eea12cf20eac41263219df2ad23f539748b03b
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Mon Mar 11 15:38:34 2024 +0000
+
+    Created function that sends partitions to each MPI process.
+
+M	LidDrivenCavity.cpp
+M	LidDrivenCavity.h
+M	LidDrivenCavitySolver.cpp
+
+commit 1205a684a286c45caa93408f43d5209343d5fcb6
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Fri Mar 8 16:18:36 2024 +0000
+
+    Tasks 1-3 complete
+
+M	LidDrivenCavity.cpp
+M	LidDrivenCavity.h
+M	LidDrivenCavitySolver.cpp
+A	Makefile
+M	SolverCG.cpp
+
+commit 63689831eba3c14a631a32e9877250acc05967ab
+Author: Cristian <cv320@ic.ac.uk>
+Date:   Mon Mar 4 16:09:24 2024 +0000
+
+    Start of CW.
+
+A	LidDrivenCavity.cpp
+A	LidDrivenCavity.h
+A	LidDrivenCavitySolver.cpp
+A	SolverCG.cpp
+A	SolverCG.h
