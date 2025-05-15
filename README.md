@@ -77,12 +77,11 @@ mpirun -np 4 ./solver --Lx 1 --Ly 1 --Nx 200 --Ny 200 --Re 1000 --dt 0.005 --T 5
 
 ### OpenMP Performance Results (Runtime in seconds):
 
-| Threads | 100×100 | 200×200 | 400×400 |
-|---------|---------|---------|---------|
-| 1       | 259.2   | 2711    | 1874    |
-| 4       | 203.1   | 838.8   | 629.7   |
-| 8       | 177.4   | 705.1   | 363.9   |
-| 16      | 293.8   | 765.0   | 272.6   |
+| Grid Size | 1 Thread | 4 Threads | 8 Threads | 16 Threads |
+|-----------|----------|-----------|-----------|------------|
+| 100×100   | 259.2    | 203.1     | 177.4     | 293.8      |
+| 200×200   | 2711     | 838.8     | 705.1     | 765.0      |
+| 400×400   | 1874     | 629.7     | 363.9     | 272.6      |
 
 Best performance noted for larger grid sizes and moderate thread counts (8 threads recommended).
 
