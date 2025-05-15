@@ -44,19 +44,19 @@ mpirun -np 4 ./solver --Lx 1 --Ly 1 --Nx 200 --Ny 200 --Re 1000 --dt 0.005 --T 5
 ```
 
 ### Available Command-line Arguments:
-- --Lx: Domain length in the x-direction (default: 1)
-- --Ly: Domain length in the y-direction (default: 1)
-- --Nx: Grid points in the x-direction (default: 9)
-- --Ny: Grid points in the y-direction (default: 9)
-- --p: Partitions per direction for MPI (must satisfy p*p MPI ranks)
-- --dt: Time step size (default: 0.01)
-- --T: Final simulation time (default: 0.1)
-- --Re: Reynolds number (default: 10)
-- --verbose: Enable verbose output
-- --help: Show help message
+- `--Lx`: Domain length in the x-direction (default: 1)
+- `--Ly`: Domain length in the y-direction (default: 1)
+- `--Nx`: Grid points in the x-direction (default: 9)
+- `--Ny`: Grid points in the y-direction (default: 9)
+- `--p`: Partitions per direction for MPI (must satisfy p*p MPI ranks)
+- `--dt`: Time step size (default: 0.01)
+- `--T`: Final simulation time (default: 0.1)
+- `--Re`: Reynolds number (default: 10)
+- `--verbose`: Enable verbose output
+- `--help`: Show help message
 
 ## MPI Parallelisation
-- Domain decomposition into p² sub-domains, assigning one to each MPI process.
+- Domain decomposition into `p²` sub-domains, assigning one to each MPI process.
 - Efficient communication by exchanging only boundary layers between neighboring ranks.
 - MPI_Allreduce used for synchronizing intermediate and final results across processes.
 - Good parallel scaling achieved with larger grid sizes (optimal for grids ≥ 100×100).
@@ -70,8 +70,8 @@ Grid Size | 1 Rank | 4 Ranks | 9 Ranks | 16 Ranks
 400×400   | 2180   | 588.2   | 287.9   | 197.0
 
 ## OpenMP Parallelisation
-- Shared-memory threading implemented for computational loops in SolverCG.
-- Custom parallel versions of cblas_ddot, cblas_daxpy, and cblas_dcopy implemented using OpenMP due to better performance over the standard CBLAS versions.
+- Shared-memory threading implemented for computational loops in `SolverCG`.
+- Custom parallel versions of `cblas_ddot`, `cblas_daxpy`, and `cblas_dcopy` implemented using OpenMP due to better performance over the standard CBLAS versions.
 
 ### OpenMP Performance Results (Runtime in seconds):
 Threads | 100×100 | 200×200 | 400×400
@@ -85,10 +85,10 @@ Best performance noted for larger grid sizes and moderate thread counts (8 threa
 ## Optimisation and Profiling
 Detailed profiling (using serial and single-threaded runs) identified critical computational hotspots:
 
-- Major hotspots: BLAS operations (cblas_ddot, cblas_dnrm2), ApplyOperator, and Precondition functions.
+- Major hotspots: BLAS operations (`cblas_ddot`, `cblas_dnrm2`), `ApplyOperator`, and `Precondition` functions.
 
 Optimisation strategies included:
-- Compiler optimisation flag improved from -O2 to -O3 (~10% runtime improvement).
+- Compiler optimisation flag improved from `-O2` to `-O3` (~10% runtime improvement).
 - Removed redundant BLAS operations (21% additional runtime improvement).
 - Reduced frequency of convergence checks (runtime reduced by additional ~15%).
 
