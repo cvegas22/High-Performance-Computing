@@ -1,56 +1,59 @@
-# High-Performance Computing
-**Parallelisation and Optimisation of Lid-Driven Cavity Solver**
+# High-Performance Computing Coursework
+**Parallelisation and Optimisation of a Lid-Driven Cavity Solver**
 
 ---
 
-## Project Overview
-This repository provides a highly optimised and parallelised implementation of a solver for the 2D lid-driven cavity flow problem, using the vorticity-stream function formulation of the incompressible Navier-Stokes equations. Parallelisation was achieved using **MPI** for distributed-memory computing and **OpenMP** for shared-memory multi-threading. The solver uses a preconditioned **Conjugate Gradient (CG)** method for solving Poisson equations iteratively.
+## Overview
+This project contains an optimised and parallelised C++ implementation for the lid-driven cavity flow problem, solving the incompressible Navier-Stokes equations in two dimensions using a finite difference approach. Parallelism is achieved through **MPI** for distributed-memory parallelisation and **OpenMP** for shared-memory threading. The numerical solver employs a preconditioned **Conjugate Gradient (CG)** method to solve the Poisson equation iteratively.
 
 ---
 
-## Directory Structure
+## Project Structure
 ```bash
 .
-├── LidDrivenCavity.cpp/h            # Lid-driven cavity solver implementation
-├── LidDrivenCavitySolver.cpp        # Main execution driver
-├── SolverCG.cpp/h                   # Parallelised Conjugate Gradient solver
-├── unit_test_LidDrivenCavity.cpp    # Unit tests for LidDrivenCavity class
-├── unit_test_SolverCG.cpp           # Unit tests for SolverCG class
-├── Makefile                         # Compilation commands
-├── Doxyfile                         # Configuration for Doxygen documentation
-├── repository.log                   # Detailed Git commit history
-├── HPC_Report.pdf                   # Coursework report (MPI/OpenMP scaling and optimisations)
-└── README.md                        # This file
+├── LidDrivenCavity.cpp/h            # Core class for setting up and solving the problem
+├── LidDrivenCavitySolver.cpp        # Main driver program
+├── SolverCG.cpp/h                   # Conjugate Gradient solver class with MPI/OpenMP support
+├── unit_test_LidDrivenCavity.cpp    # Unit test for LidDrivenCavity class
+├── unit_test_SolverCG.cpp           # Unit test for SolverCG class
+├── Makefile                         # Compilation and testing commands
+├── Doxyfile                         # Configuration file for documentation generation (Doxygen)
+├── repository.log                   # Git commit history
+└── README.md                        # This README file
 ```
 
 ## Dependencies
-- MPI (OpenMPI or similar)
-- OpenMP
-- CBLAS (for optimized linear algebra computations)
-- Boost libraries (program options parsing, Boost.Test for unit testing)
-- Doxygen (documentation generation)
+- MPI: Distributed-memory parallel execution.
+- OpenMP: Shared-memory threading.
+- CBLAS: BLAS routines for linear algebra operations.
+- Boost: Program options parsing and unit testing (Boost.Test).
+- Doxygen: Automated documentation generation.
 
 ## Compilation
 Use the provided Makefile to compile:
+```bash
+make                 # Compiles solver executable (named 'solver')
+make doc             # Generates documentation using Doxygen
+make unittests       # Compiles and runs unit tests
+```
 
-make                 # Compile solver executable named 'solver'
-make doc             # Generate documentation via Doxygen
-make unittests       # Compile and execute unit tests
-
-## Execution
-Run the solver with desired parameters, e.g.:
-
+## Running the Solver
+Execute the solver with command-line parameters, e.g.:
+```bash
 mpirun -np 4 ./solver --Lx 1 --Ly 1 --Nx 200 --Ny 200 --Re 1000 --dt 0.005 --T 50 --p 2
+```
 
-### Command-line Options:
-- --Lx, --Ly: Domain dimensions (default: 1)
-- --Nx, --Ny: Grid resolution (default: 9)
+### Available Command-line Arguments:
+- --Lx: Domain length in the x-direction (default: 1)
+- --Ly: Domain length in the y-direction (default: 1)
+- --Nx: Grid points in the x-direction (default: 9)
+- --Ny: Grid points in the y-direction (default: 9)
+- --p: Partitions per direction for MPI (must satisfy p*p MPI ranks)
+- --dt: Time step size (default: 0.01)
+- --T: Final simulation time (default: 0.1)
 - --Re: Reynolds number (default: 10)
-- --dt: Time step (default: 0.01)
-- --T: Simulation end-time (default: 0.1)
-- --p: Domain partitioning factor (must satisfy p*p MPI ranks)
-- --verbose: Verbose output
-- --help: Display help message
+- --verbose: Enable verbose output
+- --help: Show help message
 
 ## MPI Parallelisation
 - Domain decomposition into p² sub-domains, assigning one to each MPI process.
